@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOS Burgers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container  ">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills ">
+                <li class="nav-item  "><a href="../index.html" class="nav-link " aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link active ">Place Order</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Items</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Customers</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            </ul>
+        </header>
+    </div>
+    <div class="bg-dark p-3">
+        <div class="row bg-light mx-0 py-4">
+            <div class="col-sm-8 "
+                style="background-image: url(../img/mainPage/burger2.jpg) ;background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+
+                <div class="card rounded-3 mb-3">
+                    <div class="card-body">
+                        <ul class="nav nav-pills " id="pills-tab" role="tablist">
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active rounded-pill" id="pills-burgers-tab"
+                                    data-bs-toggle="pill" data-bs-target="#pills-burgers" type="button" role="tab"
+                                    aria-controls="pills-burgers" aria-selected="true">Burgers</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link rounded-pill" id="pills-submarines-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-submarines" type="button" role="tab"
+                                    aria-controls="pills-submarines" aria-selected="false">Submarines</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link rounded-pill" id="pills-fries-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-fries" type="button" role="tab" aria-controls="pills-fries"
+                                    aria-selected="false">Fries</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link rounded-pill" id="pills-pasta-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-pasta" type="button" role="tab" aria-controls="pills-pasta"
+                                    aria-selected="false">Pasta</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link rounded-pill" id="pills-chicken-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-chicken" type="button" role="tab"
+                                    aria-controls="pills-chicken" aria-selected="false">Chicken</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link rounded-pill" id="pills-beverages-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-beverages" type="button" role="tab"
+                                    aria-controls="pills-beverages" aria-selected="false">Beverages</button>
+                            </li>
+                            <!-- ===d-none== -->
+                            <li class="nav-item d-none" role="presentation">
+                                <button class="nav-link rounded-pill btn btn-info" id="pills-checkout-tab"
+                                    data-bs-toggle="pill" data-bs-target="#pills-checkout" type="button" role="tab"
+                                    aria-controls="pills-checkout" aria-selected="false">CHECK OUT</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <div class="tab-content" id="pills-tabContent">
+
+                    <!-- Start Burger Section -->
+
+                    <div class="tab-pane fade show active" id="pills-burgers" role="tabpanel"
+                        aria-labelledby="pills-burgers-tab">
+                        <!--==================================================== Burgers Cards ====================================================================-->
+                        <div class="row row-cols-1 row-cols-md-5 g-4 img-fluid">
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('B00','Classic Burger(Regular)',750.00,'../img/Burgers/Classic Burger (Regular).jpg')">
+                                    <img draggable="false" src=" ../img/Burgers/Classic Burger (Regular).jpg"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Classic Burger(Regular)</h6>
+                                        <h6>B1001</h6>
+                                        <p class="h6" class="card-text"> Rs.750.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('B01','Classic Burger(Large)',1500.00,'../img/Burgers/Classic Burger (Large).webp');">
+                                    <img src="../img/Burgers/Classic Burger (Large).webp" class="card-img-top"
+                                        alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Classic Burger(Large)</h6>
+                                        <p class="h6" class="card-text ">Rs.1500.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards "
+                                    onclick="orderBasket('B02','Turkey Burger',1600.00,'../img/Burgers/Turkey Burgers.jpeg');">
+                                    <img src="../img/Burgers/Turkey Burgers.jpeg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Turkey Burger</h6>
+                                        <p class=" h6 card-text ">Rs.1600.00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('B03','Chicken Burger(Large)',1400.00,'../img/Burgers/Chicken Burger (Large).jpg');">
+                                    <img src="../img/Burgers/Chicken Burger (Large).jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Chicken Burger(Large)</h6>
+                                        <p class="h6" class="card-text">Rs.1400.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('B04','Chicken Burger(Regular)',800.00,'../img/Burgers/Chicken Burger (Regular).jpg');">
+                                    <img src="../img/Burgers/Chicken Burger (Regular).jpg" class="card-img-top"
+                                        alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Chicken Burger(Regular)</h6>
+                                        <p class="h6" class="card-text">Rs.800.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('B05','Cheese Burger(Large)',1000.00,'../img/Burgers/Cheese Burger Large.jpg');">
+                                    <img src="../img/Burgers/Cheese Burger Large.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Cheese Burger(Large)</h6>
+                                        <p class="h6" class="card-text">Rs.1000.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('B06','Cheese Burger(Regular)',600.00,'../img/Burgers/Cheese BUrger regular.jpg');">
+                                    <img src="../img/Burgers/Cheese BUrger regular.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Cheese Burger(Regular)</h6>
+                                        <p class="h6" class="card-text">Rs.600.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('B07','Bacon Burger',650.00,'../img/Burgers/Bacon Burger.jpg');">
+                                    <img src="../img/Burgers/Bacon Burger.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Bacon Burger</h6>
+                                        <p class="h6" class="card-text">Rs.650.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                    <!-- End Burger Section -->
+
+                    <!-- Start Submarine Section -->
+                    <div class="tab-pane fade" id="pills-submarines" role="tabpanel"
+                        aria-labelledby="pills-submarines-tab">
+                        Submarines
+                    </div>
+                    <!-- End Submarine Section -->
+
+
+                    <!-- Start Fries Section -->
+                    <div class="tab-pane fade" id="pills-fries" role="tabpanel" aria-labelledby="pills-fries-tab">
+                        Fries</div>
+                    <!-- End Submarine Section -->
+
+                    <!-- Start Pasta Section -->
+                    <div class="tab-pane fade " id="pills-pasta" role="tabpanel" aria-labelledby="pills-pasta-tab">Pasta
+                    </div>
+                    <!-- End Pasta Section -->
+
+                    <!-- Start Chicken Section -->
+                    <div class="tab-pane fade" id="pills-chicken" role="tabpanel" aria-labelledby="pills-chicken-tab">
+                        Chicken</div>
+                    <!-- End Chicken Section -->
+
+
+
+                    <!-- Start beverages Section -->
+                    <div class="tab-pane fade" id="pills-beverages" role="tabpanel"
+                        aria-labelledby="pills-beverages-tab">
+                        <div class="row row-cols-1 row-cols-md-5 g-4">
+
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('D01','Pepsi(330ml)',990.00,'../img/Beverages/Pepsi .jpg');">
+                                    <img src="../img/Beverages/Pepsi .jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Pepsi(330ml)</h6>
+                                        <p class="h6" class="card-text">Rs.990.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('D02','Coca-Cola(330ml)',1230.00,'../img/Beverages/Coca-Cola.jpg');">
+                                    <img src="../img/Beverages/Coca-Cola.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Coca-Cola(330ml)</h6>
+                                        <p class="h6" class="card-text">Rs.1230.00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('D03','Sprite(330ml)',1500.00,'../img/Beverages/Sprite.jpg');">
+                                    <img draggable="false" src="../img/Beverages/Sprite.jpg" class="card-img-top"
+                                        alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Sprite(330ml)</h6>
+                                        <p class="h6" class="card-text">Rs.1500.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card custom-cards"
+                                    onclick="orderBasket('D04','Mirinda(330ml)',850.00,'../img/Beverages/mirinda.jpg');">
+                                    <img src=" ../img/Beverages/mirinda.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Mirinda(330ml)</h6>
+                                        <p class="h6" class="card-text"> Rs.850.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- End beverages Section -->
+
+
+
+                    <!-- Start Check out Section -->
+                    <div class="tab-pane fade" id="pills-checkout" role="tabpanel" aria-labelledby="pills-checkout-tab">
+                        <div class="row mb-3">
+                            <label for="colFormLabelLg"
+                                class=" text-center col-sm-4  col-form-label col-form-label-lg fw-bold rounded-pill"
+                                style="background-color: aliceblue;">Customer
+                                ID :-</label>
+                            <div class="col-sm-8 ">
+                                <input type="text" class=" text-center form-control form-control-lg rounded-pill"
+                                    id="customerID" placeholder="OR#88">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="colFormLabelLg"
+                                class="text-center col-sm-4 col-form-label col-form-label-lg fw-bold rounded-pill"
+                                style="background-color: aliceblue;">Amount :-</label>
+                            <div class="col-sm-8 ">
+                                <input type="number" step="0.01"
+                                    class=" text-center form-control form-control-lg rounded-pill" id="amount"
+                                    placeholder="Amount">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="text-center col-sm-4 col-form-label col-form-label-lg fw-bold rounded-pill"
+                                style="background-color: aliceblue;">Customer
+                                Paid :-</label>
+                            <div class="col-sm-8 ">
+                                <button onclick="amountCal()" id="calculatorModal"
+                                    class="btn btn-dark btn-lg w-100 rounded-pill" data-bs-toggle="modal"
+                                    data-bs-target="#amountCalculator">Insert Paid Amount</button>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="colFormLabelLg"
+                                class=" text-center col-sm-4 col-form-label col-form-label-lg fw-bold rounded-pill"
+                                style="background-color: aliceblue;">Amount Customer Paid :-</label>
+                            <div class="col-sm-8 ">
+                                <input type="number" step="0.01"
+                                    class="fw-bold text-center form-control form-control-lg rounded-pill"
+                                    id="customer_paid_amount" placeholder="customer_paid_amount">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="colFormLabelLg"
+                                class="text-center col-sm-4 col-form-label col-form-label-lg fw-bold rounded-pill"
+                                style="background-color: aliceblue;">Change :-</label>
+                            <div class="col-sm-8 ">
+                                <input type="number" step="0.01"
+                                    class=" text-center form-control form-control-lg rounded-pill fw-bold text-danger"
+                                    id="change_amount" disabled="" placeholder="change">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="printReceiptButton"
+                                class="text-center col-sm-4 col-form-label col-form-label-lg fw-bold rounded-pill"
+                                style="background-color: aliceblue;">Print Receipt :-</label>
+                            <div class="col-sm-8 ">
+                                <button id="printReceiptButton" class="btn btn-dark btn-lg w-100 rounded-pill" disabled="">Print Receipt</button>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="customernextButton"
+                                class="text-center col-sm-4 col-form-label col-form-label-lg fw-bold rounded-pill"
+                                style="background-color: aliceblue;">Next Customer :-</label>
+                            <div class="col-sm-8 ">
+                                <button id="customernextButton" class="btn btn-primary btn-lg w-100 rounded-pill" disabled="">Next
+                                    Customer</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- End Check out Section -->
+                </div>
+
+            </div>
+
+            <!-- start Order Bucket -->
+            <div class="col-sm-4 "
+                style="background-image: url(../img/background_images/b2.jpg) ;background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+                <div class="card">
+                    <div class="card-body">
+                        <p id="time-date">
+                            <small class="text-muted">Today </small><span id="current-date"></span> ,
+                            <span id="current-time"></span>
+                        </p>
+                        <h5 class="d-flex justify-content-between align-items-center"><span>Order</span>
+                            <button id="orderBasket-clear-button" class="btn btn-sm btn-danger rounded-pill"
+                                onclick="orderBasketClear()">Clear</button>
+                        </h5>
+                        <hr>
+                        <ul id="orderList" class="list-unstyled  " style="height:50vh; overflow-y: auto;">
+                            <!-- ===========================List Item 0on Order section=================== -->
+                            <!-- waguwakata ganda balanda one meka  -->
+                        </ul>
+                        <hr>
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <big>Total Items :</big> <big class="card-text fw-bold" id="totalItems">0</big>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <big>Total Amount :</big><big class="fw-bold">Rs. <span class="card-text"
+                                        id="totalcost">0.00</span> </big>
+                            </li>
+                            <hr>
+                            <li>
+                                <button disabled="" id="checkOutButton" onclick="goToCheckoutTab()"
+                                    class=" btn btn-primary btn-lg w-100 rounded-pill">Check Out</button>
+                            </li>
+
+                        </ul>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- End Order Bucket -->
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- start amount calculator model -->
+    <div class="modal fade" id="amountCalculator" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <input id="calculatorScreenAmount" type="text"
+                        class="bg-dark w-100 text-white  form-control form-control-lg rounded-pill mb-3 " disabled=""
+                        style="text-align: right;" value="0" />
+                    <div class="row">
+                        <div class="col-4 mb-3 "><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('9')">9</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('8')">8</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('7')">7</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('6')">6</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('5')">5</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('4')">4</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('3')">3</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('2')">2</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('1')">1</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('0')">0</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('00')">00</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-outline-dark w-100"
+                                onclick="calculatorInsert('.')">.</button>
+                        </div>
+                        <div class="col-4 mb-3"><button class="rounded-pill text-center btn btn-danger w-100"
+                                onclick="calculatorReset()">Reset</button>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="col-12 mb-3">
+                            <button class="rounded-pill text-center btn btn-warning w-100"
+                                onclick="exactAmountButton()">Exact Amount(<span class="fw-bold"
+                                    id="exactAmountSpan"></span>)</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 mb-3"><button class="rounded-pill text-center btn btn-warning w-100"
+                                    onclick="denominationButton(10)">10/=</button>
+                            </div>
+                            <div class="col-3 mb-3"><button class="rounded-pill text-center btn btn-warning w-100"
+                                    onclick="denominationButton(20)">20/=</button>
+                            </div>
+                            <div class="col-3 mb-3"><button class="rounded-pill text-center btn btn-warning w-100"
+                                    onclick="denominationButton(50)"> 50/=</button>
+                            </div>
+                            <div class="col-3 mb-3"><button class="rounded-pill text-center btn btn-warning w-100"
+                                    onclick="denominationButton(100)">100/=</button>
+                            </div>
+                            <div class="col-3 mb-3"><button class="rounded-pill text-center btn btn-warning w-100"
+                                    onclick="denominationButton(500)">500/=</button>
+                            </div>
+                            <div class="col-3 mb-3"><button class="rounded-pill text-center btn btn-warning w-100"
+                                    onclick="denominationButton(1000)">1000/=</button>
+                            </div>
+                            <div class="col-3 mb-3"><button class="rounded-pill text-center btn btn-warning w-100"
+                                    onclick="denominationButton(5000)">5000/=</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button onclick="calculatorReset()" type="button" class="btn btn-secondary col-2"
+                        data-bs-dismiss="modal">Close</button>
+                    <button onclick="confirmPaidButton()" id="confirmPaid" disabled="" type="button"
+                        class="btn btn-primary col-4 " data-bs-dismiss="modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- End amount calculator model -->
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="../placeOrder.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Add click event handler to all nav links
+            $(".nav-link").on("click", function () {
+                // Remove "active" class from all nav links
+                $(".nav-link").removeClass("active");
+
+                // Add "active" class to the clicked nav link
+                $(this).addClass("active");
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>

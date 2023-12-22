@@ -1,0 +1,13 @@
+.custom-cards{
+    height: 100%;
+}
+.card-img-top{
+    height: 8rem;
+    -webkit-user-drag: none;
+}
+#time-date{
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
