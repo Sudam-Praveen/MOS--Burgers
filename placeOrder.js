@@ -23,6 +23,7 @@ document.getElementById("current-date").innerHTML = current_date;
 
 // <li> <img src="img/Burgers/Classic Burger (Large).webp" style="width:50px;" /><span>Classic
 //     Burger</span> <span class="text-danger">Rs.750.00</span></li>
+let orderDetailsArray = [];
 let orderItemCodeArray = [];
 
 let orderIdArray = [];
@@ -32,6 +33,17 @@ let orderArray = [];
 let orderImgArray = [];
 let orderItemQTYArray = [];
 let i = 0;
+
+
+function generateOrderID() {
+    let i = orderDetailsArray.length
+    const orderId = document.getElementById('orderId');
+    let id = `ORD#${(i + 1).toString().padStart(5, '0')}`;
+    orderId.innerText = id;
+    document.getElementById("customerID").placeholder = id;
+
+}
+
 
 function orderBasket(itemCode, ItemName, itemPrice, itemImage) {
 
@@ -43,8 +55,8 @@ function orderBasket(itemCode, ItemName, itemPrice, itemImage) {
         // console.log('yes its exist');
         const indexItemNumber = (orderItemCodeArray.indexOf(itemCode));
         orderItemQTYArray[indexItemNumber] = orderItemQTYArray[indexItemNumber] + 1;
-        
-        incrementItem(orderIdArray[indexItemNumber],1);
+
+        incrementItem(orderIdArray[indexItemNumber], 1);
 
     } else {
 
@@ -57,7 +69,10 @@ function orderBasket(itemCode, ItemName, itemPrice, itemImage) {
         orderItemArray.push(ItemName);
         orderPriceArray.push(itemPrice);
         orderImgArray.push(itemImage);
-        orderArray.push(ItemName, itemPrice, itemImage);
+        orderArray.push({
+            itemCode: itemCode,
+            ItemName: ItemName
+        });
 
         const orderList = document.getElementById('orderList');
         //create li tag
@@ -157,6 +172,19 @@ function orderBasket(itemCode, ItemName, itemPrice, itemImage) {
 
 
     enableCheckOutButton();
+}
+function orderDetails(orderID, itemCode, ItemName) {
+    const amount = document.getElementById('amount').value;
+    orderArray.forEach(element => {
+        orderDetailsArray.push({
+            orderID: orderID,
+            itemCode: element.itemCode,
+            ItemName: element.ItemName,
+            Amount: amount
+        });
+    });
+
+
 }
 
 // //======Decremnet Items=====
@@ -297,7 +325,7 @@ function deleteItem(orderId, button) {
 
 //======================== Start calculator function=========
 
-const calculatorScreenAmount = document.getElementById("calculatorScreenAmount");
+let calculatorScreenAmount = document.getElementById("calculatorScreenAmount");
 
 function calculatorInsert(num) {
 
@@ -332,6 +360,7 @@ function exactAmountButton() {
 }
 // doing enable confirmation button 
 function enableConfirmButton() {
+
     let screenValue = parseFloat(calculatorScreenAmount.value);
     let amountValue = parseFloat(document.getElementById('amount').value);
 
@@ -352,19 +381,61 @@ function confirmPaidButton() {
     customerPaidAmount.value = parseFloat(calculatorScreenAmount.value).toFixed(2);
     changeAmount.value = parseFloat(customerPaidAmount.value - amount).toFixed(2);
 
+
+
+    orderArray.forEach(element => {
+        
+        const orderIDElement = document.getElementById('orderId');
+        const orderID = orderIDElement.innerText;
+        
+        
+        
+        // Find the existing order with the same orderID
+        const existingOrder = orderDetailsArray.find(order => order.orderID === orderID);
+        
+        // If the order exists, add the item details to its items array
+        if (existingOrder) {
+            orderArray.forEach(element => {
+                const itemCode = element.itemCode;
+                const itemName = element.ItemName;
+                existingOrder.items.push({ itemCode, itemName });
+            });
+            existingOrder.amount = amount; // Set the common amount for the order
+        } else {
+            // If the order doesn't exist, create a new order with the item details
+            const newOrder = {
+                orderID: orderID,
+                items: orderArray.map(element => ({ itemCode: element.itemCode, itemName: element.ItemName })),
+                amount: amount
+            };
+            orderDetailsArray.push(newOrder);
+        }
+        
+       
+
+
+
+
+
+    });
+
+    console.log(orderDetailsArray);
     enableNextCustomerAndPrintButton();
     disableAllButtonAfterConfirm();
+
 }
+
 
 
 
 // enable next customer and print button
-function enableNextCustomerAndPrintButton(){
+function enableNextCustomerAndPrintButton() {
     document.getElementById("printReceiptButton").disabled = false;
     document.getElementById("customernextButton").disabled = false;
+
 }
 //disableAllButtonAfterConfirm----
-function disableAllButtonAfterConfirm(){
+function disableAllButtonAfterConfirm() {
     document.getElementById("pills-burgers-tab").disabled = true;
     document.getElementById("pills-submarines-tab").disabled = true;
     document.getElementById("pills-fries-tab").disabled = true;
@@ -374,17 +445,18 @@ function disableAllButtonAfterConfirm(){
     document.getElementById("orderBasket-clear-button").disabled = true;
     document.getElementById("checkOutButton").disabled = true;
     document.getElementById("calculatorModal").disabled = true;
-    
-    
+    document.getElementById("customer_paid_amount").disabled = true;
+
+
     const allButtons = document.getElementById("orderList").querySelectorAll('button');
-    
+
     for (let i = 0; i < allButtons.length; i++) {
 
-       allButtons[i].disabled = true;
-        
+        allButtons[i].disabled = true;
+
     }
-    
-    
+
+
 }
 
 
@@ -397,6 +469,7 @@ function denominationButton(bill) {
 // insert paid amount button 
 function amountCal() {
     document.getElementById("exactAmountSpan").innerText = document.getElementById('amount').value;
+    enableConfirmButton();
 }
 //======================== End calculator function=========
 
@@ -425,3 +498,25 @@ function goToCheckoutTab() {
     const firstTab = new bootstrap.Tab(firstTabEl);
     firstTab.show();
 }
+function goToNewCustomer() {
+    const firstTabEl = document.getElementById("pills-burgers-tab");
+    const firstTab = new bootstrap.Tab(firstTabEl);
+    firstTab.show();
+    orderBasketClear();
+    generateOrderID();
+    document.getElementById("calculatorModal").disabled = false;
+    document.getElementById("pills-submarines-tab").disabled = false;
+    document.getElementById("pills-fries-tab").disabled = false;
+    document.getElementById("pills-pasta-tab").disabled = false;
+    document.getElementById("pills-chicken-tab").disabled = false;
+    document.getElementById("pills-beverages-tab").disabled = false;
+    document.getElementById("orderBasket-clear-button").disabled = false;
+
+    let customerPaidAmount = 'customer_paid_amount';
+    let changeAmount = 'change';
+    document.getElementById("customer_paid_amount").value = customerPaidAmount;
+    document.getElementById("change_amount").value = changeAmount;
+
+    calculatorScreenAmount.value = '0';
+    enableConfirmButton();
+} 
