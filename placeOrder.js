@@ -422,6 +422,7 @@ function confirmPaidButton() {
     console.log(orderDetailsArray);
     enableNextCustomerAndPrintButton();
     disableAllButtonAfterConfirm();
+    showSuccessMsg();
 
 }
 
@@ -520,3 +521,13 @@ function goToNewCustomer() {
     calculatorScreenAmount.value = '0';
     enableConfirmButton();
 } 
+
+const toastLiveExample = document.getElementById('liveToast')
+function showSuccessMsg() {
+    const id = document.getElementById("orderId").innerText;
+    
+    const boldId = "<strong>" + id + "</strong>";
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+    document.getElementById("toastmsg").innerHTML = "Order Number " + boldId + " placed successfully!";
+    toastBootstrap.show();
+  }
